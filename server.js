@@ -1,11 +1,11 @@
 const express = require('express')
+require('dotenv').config();
 const app = express()
-console.log('Hello')
 
-app.get('/', (req, res) => {
-    res.send("Hi Node API")
-})
+const PORT = process.env.PORT;
 
-app.listen(3000, () => {
-    console.log(`Node API is running on port 3000`)
+app.use(express.json())
+
+app.listen(PORT, () => {
+    console.log(`Node API is running on port ${PORT}`)
 })
