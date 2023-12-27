@@ -45,6 +45,18 @@ app.get('/products/:id', async (req, res) => {
     }
 })
 
+app.get('/products', async (req, res) => {
+    try {
+        const products = await Product.find({})
+        res.status(200).json(products)
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).json({ message: error.message })
+
+    }
+})
+
+
 // Database connection
 mongoose
     .connect(DB_URI)
